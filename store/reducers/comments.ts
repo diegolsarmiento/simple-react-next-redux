@@ -1,7 +1,7 @@
 import { SAVE_COMMENT, FETCH_COMMENTS } from '../actions/types';
 import { Comments } from '../../interfaces/comments';
 
-export default function(state=[], action: any) {
+export const commentsReducer = (state=[], action: any) => {
     switch(action.type) {
         case SAVE_COMMENT:
             return [...state, action.payload];
