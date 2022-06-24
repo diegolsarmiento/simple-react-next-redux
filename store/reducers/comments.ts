@@ -1,5 +1,5 @@
 import { SAVE_COMMENT, FETCH_COMMENTS } from '../actions/types';
-import { Comments } from '../interfaces/comments';
+import { Comments } from '../../interfaces/comments';
 
 export default function(state=[], action: any) {
     switch(action.type) {
