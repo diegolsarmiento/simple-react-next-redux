@@ -1,7 +1,18 @@
+
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Link from 'next/link';
+import * as actions from '../store/actions';
+
+/*
+import CommentBox from 'components/CommentBox';
+import CommentList from 'components/CommentList';
+*/
 
 const Home: NextPage = () => {
   return (

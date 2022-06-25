@@ -1,10 +1,20 @@
-import { CHANGE_AUTH } from '../actions/types';
+import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
 
-export const authReducer = (state = false, action: any) =>{
-    switch(action.type){
-        case CHANGE_AUTH:
-            return action.payload;
-        default:
-            return state;
+const initialState: boolean = false;
+
+export const authSlice = createSlice({
+    name: 'auth',
+    initialState,
+    reducers: {
+      changeAuth: (
+        state: Draft<any>,
+        action: PayloadAction<typeof initialState>
+      ) => {
+        state.auth = action.payload;
+      }
     }
-}
+});
+
+export const getAuthState = (state: { auth: boolean }) => state.auth;
+export const { changeAuth } = authSlice.actions;
+export default authSlice.reducer;
