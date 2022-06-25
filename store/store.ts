@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import reducers from './reducers';
+import reducers from './slices';
 import {
   useDispatch as useDispatchBase,
   useSelector as useSelectorBase,

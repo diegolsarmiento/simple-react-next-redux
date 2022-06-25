@@ -1,5 +1,8 @@
 import React from 'react';
 import { CommentsInterface } from '../interfaces/comments';
+import { connect } from 'react-redux';
+import { useDispatch, useSelector } from '../store/store';
+import { getAuthState, changeAuth } from '../store/slices/auth';
 
 class CommentList extends React.Component<{comments: CommentsInterface}, {comments: CommentsInterface}> {
 
@@ -36,4 +39,4 @@ class CommentList extends React.Component<{comments: CommentsInterface}, {commen
     }
 }
 
-export default CommentList;
+export default connect()(CommentList);
