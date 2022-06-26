@@ -1,31 +1,25 @@
 import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
-import { CommentInterface } from '../../interfaces/comment';
 import { CommentsInterface } from '../../interfaces/comments';
+import { CommentInterface } from '../../interfaces/comment';
 
-const initialComments: CommentsInterface = { comments: []};
-  
+const initialState = { comments: [{ comment: 'N/A' }] } as CommentsInterface;
+
 export const commentsSlice = createSlice({
     name: 'comments',
-    initialState: initialComments,
+    initialState,
     reducers: {
-      saveComment: (
-        state: Draft<any>,
-        action: PayloadAction<CommentInterface>
-      ) => {
-        state.comment = action.payload;
-      },
       fetchComments: (
         state: Draft<any>,
-        action: PayloadAction<any>
+        action: PayloadAction<CommentsInterface>
       ) => {
-        let comments = action.payload.data?.map((comment: CommentInterface) => {
+        let commts = action.payload.data?.map((comment: CommentInterface) => {
             comment.name
         });
-        state.comments = comments;
+        state.comments = commts;
       },
     },
 });
   
 export const getCommentsState = (state: { comments: CommentInterface[] }) => state.comments;
-export const { saveComment, fetchComments } = commentsSlice.actions;
+export const { fetchComments } = commentsSlice.actions;
 export default commentsSlice.reducer;

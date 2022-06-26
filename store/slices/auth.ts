@@ -1,6 +1,7 @@
 import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
+import { AuthState } from '../../interfaces/auth';
 
-const initialState: boolean = false;
+const initialState = { auth: false } as AuthState;
 
 export const authSlice = createSlice({
     name: 'auth',

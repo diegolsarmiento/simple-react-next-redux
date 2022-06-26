@@ -37,8 +37,6 @@ class CommentList extends React.Component<{comments: CommentsInterface}, {commen
     }
 }
 
-const mapStateToProps = (state: any) => {
-    return { comments: state.comments }
-}
+const mapStateToProps = (state: any) => ({ comments: state.comments });
 
 export default connect(mapStateToProps)(CommentList);
