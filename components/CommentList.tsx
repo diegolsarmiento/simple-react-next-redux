@@ -2,11 +2,7 @@ import React from 'react';
 import { CommentsInterface } from '../interfaces/comments';
 import { connect } from 'react-redux';
 
-class CommentList extends React.Component<{comments: CommentsInterface}, {comments: CommentsInterface}> {
-
-    constructor(props: any){
-        super(props);
-    }
+class CommentList extends React.Component<CommentsInterface,any> {
 
     renderList: any = (object: any) => {
         Object.keys(object).map((value: string, index: number) => {

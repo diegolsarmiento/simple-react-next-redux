@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { CommentInterface } from '../interfaces/comment';
 
-class CommentBox extends React.Component<{comment: string}, {comment: string}> {
+class CommentBox extends React.Component<CommentInterface, any> {
     
     title = 'Add comment';
     buttonText = 'Submit Comment';
@@ -13,7 +14,7 @@ class CommentBox extends React.Component<{comment: string}, {comment: string}> {
     
     handleSubmit = (event: any) => {
         event.preventDefault();
-        //TODO: this.props.saveComment(this.state.comment);
+        //this.props.saveComment(this.state.comment);
         this.setState({comment: ''});
     }
     
@@ -36,4 +37,5 @@ class CommentBox extends React.Component<{comment: string}, {comment: string}> {
     }
 }
 
-export default connect()(CommentBox);
+const mapStateToProps = (state: any) => ({ comment: state.comment });
+export default connect(mapStateToProps)(CommentBox);

@@ -2,13 +2,8 @@ import React from 'react';
 import Layout from '../components/Layout';
 import CommentList from '../components/CommentList';
 import { CommentsInterface } from '../interfaces/comments';
-import { connect } from 'react-redux';
 
-class HomeComponent extends React.Component<{comments: CommentsInterface},{}> {
-
-  constructor(props: any){
-    super(props);
-  }
+class HomeComponent extends React.Component<CommentsInterface,any> {
 
   render(){
     return(
