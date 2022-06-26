@@ -1,8 +1,6 @@
 import React from 'react';
 import { CommentsInterface } from '../interfaces/comments';
 import { connect } from 'react-redux';
-import { useDispatch, useSelector } from '../store/store';
-import { getAuthState, changeAuth } from '../store/slices/auth';
 
 class CommentList extends React.Component<{comments: CommentsInterface}, {comments: CommentsInterface}> {
 
@@ -39,4 +37,8 @@ class CommentList extends React.Component<{comments: CommentsInterface}, {commen
     }
 }
 
-export default connect()(CommentList);
+const mapStateToProps = (state: any) => {
+    return { comments: state.comments }
+}
+
+export default connect(mapStateToProps)(CommentList);
