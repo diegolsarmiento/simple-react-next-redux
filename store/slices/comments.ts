@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { CommentsInterface } from '../../interfaces/comments';
 import { CommentInterface } from '../../interfaces/comment';
 
-const initialState = { comments: [{ comment: 'N/A' }] } as CommentsInterface;
+const initialState = { comments: [{ comment: 'N/A', index: 0}] } as CommentsInterface;
 
 /*
 // EXAMPLE with params
@@ -21,7 +21,7 @@ export const fetchContentApi = createAsyncThunk(
   'comments/fetchByCode',
   async () => {
     const response = await fetch(`http://jsonplaceholder.typicode.com/comments`);
-    return await response.json()
+    return await response.json();
   }
 );
 
