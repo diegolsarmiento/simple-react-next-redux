@@ -3,16 +3,13 @@ import Layout from '../components/Layout';
 import CommentList from '../components/CommentList';
 import { CommentsInterface } from '../interfaces/comments';
 
-class HomeComponent extends React.Component<CommentsInterface,any> {
-
-  render(){
-    return(
+const HomeComponent = (props: CommentsInterface) => {
+  return(
       <Layout>
         <h1>Home</h1>
-        <CommentList {...this.props} />
+        <CommentList {...props} />
       </Layout>
-    )
-  }
+  )
 }
 
 export default HomeComponent;

@@ -9,7 +9,7 @@ export const commentSlice = createSlice({
     reducers: {
       saveComment: (
         state: Draft<any>,
-        action: PayloadAction<CommentInterface>
+        action: PayloadAction<string>
       ) => {
         state.comment = action.payload;
       },
