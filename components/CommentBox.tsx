@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { connect } from 'react-redux';
 import { fetchContentApi, saveComment } from '../store/slices/comments';
 import { bindActionCreators } from 'redux';
+import CommentList from './CommentList';
 
 const CommentBox = (props: any) => {
     const title = 'Add comment';
@@ -12,6 +13,8 @@ const CommentBox = (props: any) => {
         event.preventDefault();
         setComment(comment);
         props.saveComment(comment);
+        //clean it
+        setComment('');
     }
     
     const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -22,13 +25,16 @@ const CommentBox = (props: any) => {
         <div>
             <div>
                 <form onSubmit={handleSubmit} role="box">
-                    <h4>{title}</h4>
+                    <h3>{title}</h3>
                     <textarea aria-label="text-comment" onChange={handleChange} value={comment} />
                     <div>
                         <button>{buttonText}</button>
                     </div>
                 </form>
-                <button aria-label="async-button" onClick={props.fetchContentApi}>Fetch Comments</button>
+                <ul>
+                    <li><button aria-label="async-button" onClick={props.fetchContentApi}>Fetch Comments</button></li>
+                    <li><CommentList /></li>
+               </ul>
             </div>
         </div>
     )
