@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { connect } from 'react-redux';
-import { fetchContentApi } from '../store/slices/comments';
+import { fetchContentApi, saveComment } from '../store/slices/comments';
 import { bindActionCreators } from 'redux';
 
 const CommentBox = (props: any) => {
@@ -11,6 +11,7 @@ const CommentBox = (props: any) => {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setComment(comment);
+        props.saveComment(comment);
     }
     
     const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -35,6 +36,6 @@ const CommentBox = (props: any) => {
 
 const mapStateToProps = (state: any) => ({ comment: state.comment });
 const mapDispatchToProps = (dispatch: any) => {
-    return bindActionCreators ({fetchContentApi}, dispatch)
+    return bindActionCreators ({saveComment, fetchContentApi}, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CommentBox);

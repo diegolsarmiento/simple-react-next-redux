@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, Draft, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { CommentsInterface } from '../../interfaces/comments';
 import { CommentInterface } from '../../interfaces/comment';
 
@@ -28,7 +28,14 @@ export const fetchContentApi = createAsyncThunk(
 export const commentsSlice = createSlice({
     name: 'comments',
     initialState,
-    reducers: {},
+    reducers: {
+      saveComment: (
+        state: Draft<any>,
+        action: PayloadAction<string>
+      ) => {
+        state.comments = [...state.comments, {name: action.payload}];
+      },
+    },
     extraReducers: (builder) => {
       /*
         You can also add builder.addCase(fetchContentApi.pending...
@@ -36,12 +43,14 @@ export const commentsSlice = createSlice({
       */
       builder.addCase(fetchContentApi.fulfilled, (state, action) => {
       /*
-        Map it and  Add comments to the state
-      */
-      state.comments = action.payload;
+        // In case you want to replace the array use
+        state.comments = action.payload;
+       */
+      state.comments = [...state.comments, ...action.payload];
       })
     },
 });
   
 export const getCommentsState = (state: { comments: CommentInterface[] }) => state.comments;
+export const { saveComment } = commentsSlice.actions;
 export default commentsSlice.reducer;
