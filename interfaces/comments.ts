@@ -1,3 +1,5 @@
-export interface Comments {
-    name: string;
+import { CommentInterface } from './comment';
+
+export interface CommentsInterface {
+    comments: CommentInterface[];
 }

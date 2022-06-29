@@ -3,13 +3,28 @@
 }
 
 .main {
-  min-height: 100vh;
+  min-height: 95vh;
   padding: 4rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.header {
+  min-height: 5vh;
+  padding: 2rem 0;
+  flex: 1;
+  display: flex;
+
+  .menu {
+    padding: 0.3rem;
+    margin-right: 0.5rem;
+    background-color: #dddddd;
+    width: 4rem;
+    text-align: center;
+  }
 }
 
 .footer {
