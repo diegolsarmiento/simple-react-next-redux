@@ -9,8 +9,8 @@ const HomeComponent = () => {
       <Layout>
         <Stack spacing={1}>
           <Item><h1>Home</h1></Item>
-          <CommentList />
         </Stack>
+        <CommentList />
       </Layout>
   )
 }

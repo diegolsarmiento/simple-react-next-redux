@@ -6,12 +6,12 @@ import Item from '@mui/material/ListItem';
 
 const PostComponent = () =>  {
   return(
-    <Layout>
-      <Stack spacing={1}>
-        <Item><h1>Home</h1></Item>
+      <Layout>
+        <Stack spacing={1}>
+          <Item><h1>Post</h1></Item>
+        </Stack>
         <CommentBox />
-      </Stack>
-    </Layout>
+      </Layout>
   )
 }
 
