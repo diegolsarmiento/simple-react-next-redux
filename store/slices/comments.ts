@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { CommentsInterface } from '../../interfaces/comments';
 import { CommentInterface } from '../../interfaces/comment';
 
-const initialState = { comments: [{ comment: 'N/A', index: 0}] } as CommentsInterface;
+const initialState = { comments: [{ name: 'N/A', index: 0}] } as CommentsInterface;
 
 /*
 // EXAMPLE with params
@@ -38,10 +38,7 @@ export const commentsSlice = createSlice({
       /*
         Map it and  Add comments to the state
       */
-      const commts = action.payload.data?.map((comment: CommentInterface) => {
-        comment.name
-      });
-      state.comments = commts;
+      state.comments = action.payload;
       })
     },
 });

@@ -1,16 +1,15 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { connect } from 'react-redux';
-import { saveComment } from '../store/slices/comment';
 import { fetchContentApi } from '../store/slices/comments';
+import { bindActionCreators } from 'redux';
 
-const CommentBox = () => {
+const CommentBox = (props: any) => {
     const title = 'Add comment';
     const buttonText = 'Submit Comment';
     const [comment, setComment] = useState('');
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        saveComment(comment);
         setComment(comment);
     }
     
@@ -28,11 +27,14 @@ const CommentBox = () => {
                         <button>{buttonText}</button>
                     </div>
                 </form>
-                <button aria-label="async-button" onClick={fetchContentApi}>Fetch Comments</button>
+                <button aria-label="async-button" onClick={props.fetchContentApi}>Fetch Comments</button>
             </div>
         </div>
     )
 }
 
 const mapStateToProps = (state: any) => ({ comment: state.comment });
-export default connect(mapStateToProps)(CommentBox);
+const mapDispatchToProps = (dispatch: any) => {
+    return bindActionCreators ({fetchContentApi}, dispatch)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CommentBox);

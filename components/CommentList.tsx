@@ -5,7 +5,7 @@ import { CommentInterface } from '../interfaces/comment';
 
 const renderList: any = (stateArray: CommentsInterface) => {
     const list = stateArray.comments.map((value: CommentInterface, index: number) => {
-        return <li key={index} aria-label="comment-list">{value.comment}</li>;
+        return <li key={index} aria-label="comment-list">{value?.name}</li>;
     })
    return list;
 }
