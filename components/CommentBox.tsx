@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { fetchContentApi, saveComment } from '../store/slices/comments';
 import { bindActionCreators } from 'redux';
 import CommentList from './CommentList';
+// UI stuff
+import Button from '@mui/material/Button';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
+import Item from '@mui/material/ListItem';
 
 const CommentBox = (props: any) => {
     const title = 'Add comment';
@@ -23,19 +27,15 @@ const CommentBox = (props: any) => {
 
     return(
         <div>
-            <div>
-                <form onSubmit={handleSubmit} role="box">
-                    <h3>{title}</h3>
-                    <textarea aria-label="text-comment" onChange={handleChange} value={comment} />
-                    <div>
-                        <button>{buttonText}</button>
-                    </div>
-                </form>
-                <ul>
-                    <li><button aria-label="async-button" onClick={props.fetchContentApi}>Fetch Comments</button></li>
-                    <li><CommentList /></li>
-               </ul>
-            </div>
+            <form onSubmit={handleSubmit} role="box">
+                <Item><h3>{title}</h3></Item>
+                <Item><TextareaAutosize minRows={4} aria-label="text-comment" onChange={handleChange} value={comment} /></Item>
+                <Item><Button type="submit">{buttonText}</Button></Item>
+            </form>
+            <Item>
+                <Button aria-label="async-button" onClick={props.fetchContentApi}>Fetch Comments</Button>
+            </Item>
+            <CommentList />
         </div>
     )
 }

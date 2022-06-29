@@ -1,13 +1,21 @@
 import React from 'react';
 import Header from './Header';
-import styles from '../styles/Home.module.scss';
+import { styled } from '@mui/material/styles';
+
+const Root = styled('div')(({ theme }) => ({
+    width: '100%',
+    ...theme.typography.body2,
+    '& > :not(style) + :not(style)': {
+      margin: theme.spacing(3),
+    },
+}));
 
 const Layout = ({children}: any) => {
     return (
-        <div className={styles.container}>
+        <Root>
             <Header />
             {children}
-        </div>
+        </Root>
     )
 }
 

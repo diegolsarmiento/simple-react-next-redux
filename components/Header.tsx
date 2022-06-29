@@ -10,6 +10,7 @@ const Header = () => {
                 <title>Simple React Next Redux</title>
                 <meta name="description" content="Typescript example combining React Next Redux." />
                 <link rel="icon" href="/favicon.ico" />
+                <meta name="viewport" content="initial-scale=1, width=device-width" />
             </Head>
             <main className={styles.header}>
                 <Link href="/"><a className={styles.menu} >Home</a></Link>
